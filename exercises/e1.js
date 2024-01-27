@@ -25,8 +25,13 @@ export const logMessageAfterOneSecond = (message) => {
 };
 
 export const logMessageAfterOneSecondAwait = async (message) => {
-  
 
+    async (createOneSecondPromise) => {
+      setTimeout(() => {
+        console.log(message);
+        createOneSecondPromise();
+      }, 1000);
+    }
 }
     
   // use the 'createOneSecondPromise' function, and the await keyword
