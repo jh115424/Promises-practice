@@ -16,12 +16,24 @@
  * * The function must be exported
  * Example: export function parsePromised(json) {
  *            <Promise constructor return code>
- *          }
+ *          }json_stringjson_string
  */
 
-export function parsePromised() {
+export function parsePromised(json) {
+       // Your code goes here...
+      
+        return new Promise((resolve, reject) => {
+          try {
+            resolve(JSON.parse(json));
+          } catch (error) {
+            reject(error);
+          }
+        });
+      }
+    
+    
   // Your code goes here...
-}
+
 
 /**
  * @task
@@ -30,9 +42,12 @@ export function parsePromised() {
  * * logs the message property of the error object
  */
 
-export function onReject() {
+export function onReject(err) {
   // Your code goes here...
-}
+ 
+    console.log(err.message);
+  }
+
 
 /**
  * @task
@@ -46,8 +61,17 @@ export function onReject() {
  * Example: export const promiseHandler = () => return <your code>
  */
 
-export const handlePromise = () => {
+export const handlePromise = (promise) => {
   // Your code goes here...
+  return promise
+    .then((value) => value)
+    .catch((reason) => {
+      if (reason.message) {
+        return onReject(reason);
+      } else {
+        return reason;
+      }
+    });
 };
 
 // === TEST YOURSELF ===

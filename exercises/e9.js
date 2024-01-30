@@ -11,10 +11,11 @@
  * The function must be exported
  */
 
-export function iterate(arg) {
-  // Your code goes here...
-  
+export function iterate(num) {
+  console.log(num);
+  return num + 1;
 }
+
 
 /**
  * @task
@@ -24,6 +25,7 @@ export function iterate(arg) {
 
 export function alwaysThrows() {
   // Your code goes here...
+  throw new Error("OH NOES");
 
 }
 
@@ -63,7 +65,7 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise;
+export const promise = Promise.resolve(iterate(1));
 
 
 
