@@ -11,9 +11,9 @@
  * The function must be exported
  */
 
-export function iterate(num) {
-  console.log(num);
-  return num + 1;
+export function iterate(arg) {
+  console.log(arg);
+  return arg + 1;
 }
 
 
@@ -38,8 +38,13 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject() {
+export function onReject(arg) {
   // Your code goes here...
+  if (arg instanceof Error) {
+    console.log(arg.message);
+  } else {
+    console.log(arg);
+  }
 
 }
 
@@ -65,7 +70,23 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise = Promise.resolve(iterate(1));
+export const promise = Promise.resolve(iterate(1))
+
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(alwaysThrows)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.then(iterate)
+.catch(onReject);
+
+
+       
+
+
 
 
 
