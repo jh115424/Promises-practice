@@ -20,20 +20,18 @@
  */
 
 export function parsePromised(json) {
-       // Your code goes here...
-      
-        return new Promise((resolve, reject) => {
-          try {
-            resolve(JSON.parse(json));
-          } catch (error) {
-            reject(error);
-          }
-        });
-      }
-    
-    
   // Your code goes here...
 
+  return new Promise((resolve, reject) => {
+    try {
+      resolve(JSON.parse(json));
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+// Your code goes here...
 
 /**
  * @task
@@ -44,10 +42,9 @@ export function parsePromised(json) {
 
 export function onReject(err) {
   // Your code goes here...
- 
-    console.log(err.message);
-  }
 
+  console.log(err.message);
+}
 
 /**
  * @task

@@ -11,50 +11,69 @@
  * @init_data
  * * Import fetch function from 'node-fetch' to use the fetch() function in code
  * * set the usersUrl constant to store the json-server 'users' endpoint path
-*/
+ */
+// EXERCISE 1 PASSED
+export const usersUrl = "http://localhost:3000/users/";
+const data = fetch(usersUrl);
+data
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    return data;
+  })
+  .catch((e) => console.log(e));
 
-export const usersUrl = 'http://localhost:3000/users/';
-
+//EXERCISE 2
 /**
  * @task
  * Create the getLoginList(data) function that follows the requirements:
- * * Takes an array of objects as the 'data' argument 
+ * * Takes an array of objects as the 'data' argument
  * * Returns an array of the login properties values of every array item
  * Data example: const data = [{login: 'login1'}, {login: 'login2'}]
  * Call example: getLoginList(data) => ['login1', 'login2']
  * You can use loops or array methods and any function syntax. No limits!
  * Example: const getLoginList = (data) => {<Your code>}
-*/
+ */
 
-const getLoginList = () => {
-  // Your code goes here...
+const getLoginList = (data) => {
+  const loginList = data.map((data) => data.login);
+  // const loginList = Object.values(data).map((data) => data.login);
+  console.log(loginList);
+  return loginList;
+};
 
-}
-
+//EXERCISE 3
 /**
- * @task 
- * Create the getData constant that stores the promise 
+ * @task
+ * Create the getData constant that stores the promise
  * of the fetched the URL variable:
  * example: const getData = <node_fetch_function_call>
-*/
+ */
 
 // Your code goes here ...
-const getData;
+
+const getData = fetch(usersUrl);
+
+// EXERCISE 4 PASSED
 
 /**
- * @task 
+ * @task
  * Create the result constant that stores the resolved promise value:
  * * Do not forget to convert the response to a JavaScript array when resolved
  * * Use the getLoginList() function to log the array of logins from fetched data in the console
- * * Return the array of logins when resolved 
+ * * Return the array of logins when resolved
  * Example: const result = getData
  *  .then(<Your_converting_code>)
  *  .then(<Your_logging_and_return_code>)
-*/
+ */
 
 // Your code goes here ...
-export const result = getData;
-
+export const result = getData
+  .then((res) => res.json())
+  .then((res) => {
+    return getLoginList(res);
+  })
+  .catch((e) => console.log(e));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

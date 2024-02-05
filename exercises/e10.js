@@ -62,13 +62,11 @@ export const allCharacters = [
 
 //!  ⬇ ⬇ ⬇ ⬇ Don't Edit This Function ⬇ ⬇ ⬇ ⬇
 export const fetchCharacterById = (id) => {
-
   // This function simulates an API, although most api's will return
   // simple data like this quickly, we want you to practice concurrent programming
   // so we're forcing each call to take one second
- 
+
   const validIds = allCharacters.map((character) => character.id);
- 
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -85,39 +83,6 @@ export const fetchAllCharactersByIds = async (ids) => {
   // To solve this you must fetch all characters passed in the array at the same time
   // use the `fetchCharacterById` function above to make this work
   //*  write code to pass test ⬇️
-      
-      //  const character = fetchCharacterById(ids);
-      // const allIds = ids.map(character =>  {
-    
-      //   return fetchCharacterById(character);
-      //  })
-      //  setTimeout(() =>{
-      //   console.log(allIds);
-      //  }, 1000);
-       
-      const promise = new Promise((resolve, reject) =>{
-       const array = ids.map(id => fetchCharacterById(id))
-       try {
-        resolve(array)
-       }
-       catch(error ) {
-        reject(error)
-       }
-      });
- 
-      // console.log(promise);
-      return promise;
-      // return Promise.all(ids.map((id) => fetchCharacterById(id)));
-    }
-    //  console.log(allIds);
 
-   
-      
-
-
-
-// const promises = ids.map((id) => fetchCharacterById(id));
-
-// return Promise.all(promises);
-
-//*  write code to pass test ⬇️
+  return Promise.all(ids.map((id) => fetchCharacterById(id))).catch(() => []);
+};

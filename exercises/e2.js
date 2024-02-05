@@ -18,13 +18,12 @@
 export const getPromise = (bool) => {
   // Your code goes here...
   return new Promise((resolve, reject) => {
-   if(bool) {
-    resolve("The PROMISE was RESOLVED");
-   } else {
-     reject("The PROMISE was REJECTED");
-   }
+    if (bool) {
+      resolve("The PROMISE was RESOLVED");
+    } else {
+      reject("The PROMISE was REJECTED");
+    }
   });
-
 };
 
 /**
@@ -37,20 +36,15 @@ export const getPromise = (bool) => {
  */
 
 export const handlePromise = (promise) => {
+  if (promise !== "Promise") {
+    return promise.then(
+      (value) => value,
+      () => "Uh Oh"
+    );
+  }
+};
 
-  if(promise !== 'Promise') {
-
-
-  
-     return promise.then(
-       (value) => value,
-         () => 'Uh Oh'
-      );
-     }
-    }
-
-  // Your code goes here...
-
+// Your code goes here...
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-2"

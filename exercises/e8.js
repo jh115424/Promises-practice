@@ -7,23 +7,15 @@
 
 // === RESOLVED PROMISE
 // Update the returnPromise variable to use the shortcut syntax
-export const returnPromise = () =>{
-
- 
+export const returnPromise = () => {
   return Promise.resolve("The PROMISE was RESOLVED");
-  }
-
-  
+};
 
 // === REJECTED PROMISE
 // Update the returnRejectingPromise variable to use the shortcut syntax
 export const returnRejectingPromise = () => {
   return Promise.reject("The PROMISE was REJECTED");
-}
-
-
-
-  
+};
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"

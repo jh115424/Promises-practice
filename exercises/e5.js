@@ -11,8 +11,6 @@
 export const attachTitle = (arg) => {
   return `DR. ${arg}`;
 
-
- 
   // Your code goes here...
 };
 
@@ -34,7 +32,6 @@ export const getPromise = () => {
       return value;
     });
   // Your code goes here...
-
 };
 
 // === TEST YOURSELF ===

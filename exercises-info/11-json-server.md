@@ -1,3 +1,4 @@
+
 # JSON-SERVER
 
 "json-server" package is a fake-API generator package that can be set in 30 seconds.
@@ -27,7 +28,7 @@ To start using it you need to make just a couple of steps:
 
 2. Run json-server watcher for db.json file with the following command.
 
-`npx json-server --watch <path_to_db.json_file>`
+`npx json-server --watch <path_to_db.json_file>px `
 
 **NOTE: The path to db.json file in this exercise is "data/db.json".**
 
