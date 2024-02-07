@@ -14,14 +14,6 @@
  */
 // EXERCISE 1 PASSED
 export const usersUrl = "http://localhost:3000/users/";
-const data = fetch(usersUrl);
-data
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    return data;
-  })
-  .catch((e) => console.log(e));
 
 //EXERCISE 2
 /**
@@ -36,10 +28,7 @@ data
  */
 
 const getLoginList = (data) => {
-  const loginList = data.map((data) => data.login);
-  // const loginList = Object.values(data).map((data) => data.login);
-  console.log(loginList);
-  return loginList;
+  return data.map((data) => data.login);
 };
 
 //EXERCISE 3
@@ -71,7 +60,9 @@ const getData = fetch(usersUrl);
 export const result = getData
   .then((res) => res.json())
   .then((res) => {
-    return getLoginList(res);
+    const result = getLoginList(res);
+    console.log(result);
+    return result;
   })
   .catch((e) => console.log(e));
 

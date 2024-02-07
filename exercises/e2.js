@@ -36,12 +36,10 @@ export const getPromise = (bool) => {
  */
 
 export const handlePromise = (promise) => {
-  if (promise !== "Promise") {
     return promise.then(
       (value) => value,
       () => "Uh Oh"
     );
-  }
 };
 
 // Your code goes here...

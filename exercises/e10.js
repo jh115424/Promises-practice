@@ -1,55 +1,33 @@
 export const getFirstResolvedPromise = (promises) => {
   //*  write code to pass test ⬇️
-
-  const mappedPromises = promises.map((promise) => {
-    return Promise.resolve(promise).catch(() => {
-      return Promise.reject(promise);
-    });
-  });
-  return Promise.race(mappedPromises);
+  return Promise.any(promises)
+    .then((val) => val)
+    .catch((err) => err);
 };
 
 // #PASSED
 export const getFirstPromiseOrFail = (promises) => {
-  if (promises.length === 0) {
-    return Promise.reject(new Error("No Promises were passed"));
-  } else if (promises.length === 1) {
-    return Promise.resolve(promises[0]);
-  } else {
-    return Promise.race(promises);
-  }
+  return Promise.race(promises);
 };
 
 // #PASSED
 export const getQuantityOfRejectedPromises = (promises) => {
   //*  write code to pass test ⬇ ️
-  if (promises.length === 0) {
-    return 0;
-  } else if (promises.length === 1) {
-    return Promise.resolve(promises).catch(() => {
-      return 1;
-    });
-  } else {
-    return Promise.allSettled(promises).then((results) => {
-      return results.filter((result) => {
-        return result.status === "rejected";
-      }).length;
-    });
-  }
+  return Promise.all(promises.map((p) => p.catch(() => "rejected"))).then(
+    (results) =>
+      results.filter((rejectedPromise) => rejectedPromise === "rejected").length
+  );
 };
 
 // #Done
 export const getQuantityOfFulfilledPromises = (promises) => {
   //*  write code to pass test ⬇ ️
-  if (promises instanceof Array) {
-    return Promise.allSettled(promises).then((results) => {
-      return results.filter((result) => {
-        return result.status === "fulfilled";
-      }).length;
-    });
-  } else {
-    return 0;
-  }
+  return Promise.allSettled(promises).then(
+    (results) =>
+      results.filter(
+        (fulfilledPromise) => fulfilledPromise.status === "fulfilled"
+      ).length
+  );
 };
 
 //!  ⬇ ⬇ ⬇ ⬇ Don't Edit This Array ⬇ ⬇ ⬇ ⬇
@@ -67,12 +45,10 @@ export const fetchCharacterById = (id) => {
   // so we're forcing each call to take one second
 
   const validIds = allCharacters.map((character) => character.id);
-
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!validIds.includes(id))
         reject(`we do not have a character with the id of ${id}`);
-
       return resolve(allCharacters.find((character) => character.id === id));
     }, 1000);
   });

@@ -15,7 +15,7 @@
  */
 
 export const handlePromise = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((_resolve, reject) => {
     reject("REJECTED!");
   })
     .catch((reason) => {

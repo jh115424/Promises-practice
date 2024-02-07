@@ -18,9 +18,7 @@ export const getPromise = (myNumber) => {
   // Your code goes here...
   if (myNumber % 1 === 0) {
     return new Promise((resolve) => {
-      setTimeout(() => {
         resolve(myNumber);
-      }, 1000);
     });
   }
   return 0;
@@ -39,11 +37,10 @@ export const getPromise = (myNumber) => {
  */
 export const updateSumValue = () => {
   let sum = 2;
-  const promise = getPromise(120);
-  promise.then((value) => {
+  getPromise(120).then((value) => {
     sum += value;
   });
-  return sum + 8;
+  return sum + 8;     // it came back wrong in the format the way you did it, so you know :)
   // Your code goes here...
 };
 

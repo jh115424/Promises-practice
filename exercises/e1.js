@@ -5,21 +5,13 @@
  */
 
 // #1 PASSED
-export const createOneSecondPromise = (message) => {
+export const createOneSecondPromise = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      if (message !== undefined) {
-        resolve(message);
-      }
       resolve("The PROMISE was RESOLVED");
     }, 1000);
   });
 };
-
-createOneSecondPromise().then((resolveValue) => {
-  console.log(resolveValue);
-  return resolveValue;
-});
 
 // #2
 export const logMessageAfterOneSecond = (message) => {
@@ -27,14 +19,12 @@ export const logMessageAfterOneSecond = (message) => {
   // to log the `message` parameter we pass in after one second
   // const onFulfilled = (message) => message;
 
-  createOneSecondPromise(message).then((JennysMessage) =>
-    console.log(JennysMessage)
-  );
+  createOneSecondPromise().then(() => console.log(message));
 };
 
 // #3
 export const logMessageAfterOneSecondAwait = async (message) => {
-  await createOneSecondPromise(message);
+  await createOneSecondPromise();
   console.log(message);
 };
 
